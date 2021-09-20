@@ -7,7 +7,10 @@
 ```go
 package main
 
-import "github.com/chulinx/gottable"
+import (
+	"github.com/chulinx/gottable"
+	"github.com/gookit/color"
+)
 
 var (
 	data = [][]string{
@@ -20,7 +23,8 @@ var (
 )
 
 func main(){
-    table := gottable.New(data,"left","")
+    tableParams := gottable.TableParams{Position: gottable.PositionLeft}
+    table := gottable.New(data,tableParams)
     table.Render()
 // out
 /* 
@@ -35,7 +39,8 @@ go run main.go
 |xiMing   |86       |woman   |18    |
 +---------+---------+--------+------+
 */
-    table := gottable.New(data,"right","")
+    tableParams = gottable.TableParams{Position: gottable.PositionRight}
+    table = gottable.New(data,tableParams)
     table.Render()
 // out 
 /*
@@ -49,7 +54,8 @@ go run main.go
 |   xiMing|       86|   woman|    18|
 +---------+---------+--------+------+
 */
-    table := gottable.New(data,"center","")
+    tableParams = gottable.TableParams{Position: gottable.PositionCenter}
+    table = gottable.New(data,tableParams)
     table.Render()
 // out
 /*
@@ -62,8 +68,9 @@ go run main.go
 +----------+----------+--------+------+
 |  xiMing  |    86    | woman  |  18  |
 +----------+----------+--------+------+
-*/
-    table := gottable.New(data,"center","simplicity")
+*/  
+    tableParams = gottable.TableParams{Position: gottable.PositionCenter,Style: gottable.StyleSimple}
+    table = gottable.New(data,tableParams)
     table.Render()
 // out
 /*
@@ -75,5 +82,10 @@ go run main.go
 |  xiMing  |    86    | woman  |  18  |
 +----------+----------+--------+------+
 */
-}
 
+    tableParams = gottable.TableParams{HeadStyle:gottable.HeadStyle{IsBorder: true,TextColor:color.Red }}
+    table = gottable.New(data,tableParams)
+    table.Print()
+}
+```
+[](images/tablePrint.jpg)
