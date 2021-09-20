@@ -88,4 +88,4 @@ go run main.go
     table.Print()
 }
 ```
-[](images/tablePrint.jpg)
+![](images/tablePrint.jpg)
